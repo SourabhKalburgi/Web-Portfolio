@@ -1,0 +1,157 @@
+.wrapper {
+    overflow: hidden;
+    color: #f7fff7;
+  
+    .container {
+      position: relative;
+      z-index: 1;
+  
+      .upperElements {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        color: #f7fff7;
+  
+        @media (max-width: 768px) {
+          justify-content: center;
+          text-align: center;
+          gap: 2rem;
+        }
+  
+        .primaryText, .secondaryText {
+          font-size: 1.5rem;
+  
+          @media (max-width: 768px) {
+            font-size: 1rem;
+          }
+  
+          @media (max-width: 576px) {
+            font-size: 1rem;
+          }
+        }
+      }
+  
+      .lowerElements {
+        margin-top: 12rem;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+  
+        @media (max-width: 768px) {
+          margin-top: 4rem;
+          gap: 1rem;
+          justify-content: center;
+        }
+        
+  
+        .experience, .certificate {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+  
+          .secondaryText {
+            font-size: 1.2rem;
+            color: #f7fff7;
+          }
+  
+          .primaryText {
+            font-size: 30px;
+            line-height: 37px;
+  
+            @media (max-width: 768px) {
+              font-size: 28px;
+              line-height: 30px;
+            }
+  
+            @media (max-width: 576px) {
+              font-size: 24px;
+              line-height: 26px;
+            }
+          }
+        }
+  
+        .experience {
+          // Professional Web Developer style remains the same
+          .primaryText {
+            div {
+              line-height: 1.2;
+            }
+          }
+        }
+  
+        .certificate {
+          // Reuse similar design for CERTIFIED UI/UX DESIGNER
+          img {
+            display: none; // Hide the image to make it uniform
+          }
+  
+          .primaryText {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+  
+            div {
+              line-height: 1.2;
+            }
+          }
+  
+          a.uxcertificate {
+            display: none; // Hide the link
+          }
+        }
+      }
+  
+      .person {
+        position: absolute;
+        bottom: -2rem;
+        margin: auto;
+        background-image: url("../splash.png");
+        background-repeat: no-repeat;
+        background-size: 20rem;
+        left: 33%;
+  
+        @media (max-width: 768px) {
+          position: relative;
+          left: 0;
+          background-size: 15rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background-position: bottom;
+        }
+  
+        img {
+          margin-bottom: -5px;
+  
+          @media (max-width: 768px) {
+            width: 20rem;
+          }
+  
+          @media (max-width: 576px) {
+            width: 18rem;
+          }
+        }
+      }
+  
+      .email {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        color: rgb(255, 166, 0);
+  
+        @media (max-width: 768px) {
+          display: none;
+        }
+      }
+    }
+  }
+  
+  // Override the global style for primaryText
+  .wrapper .container .lowerElements .experience .primaryText,
+  .wrapper .container .lowerElements .certificate .primaryText {
+    @media (max-width: 640px) {
+      font-size: 24px !important;
+    }
+  }
+  
