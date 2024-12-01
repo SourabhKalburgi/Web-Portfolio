@@ -32,7 +32,7 @@ const Portfolio = () => {
             projectName="Group Study App"
           />
           <PortfolioItem
-            href="https://keeper-app-sourabh.netlify.app/"
+            href="https://keeperapp-gy3m.onrender.com/"
             imgSrc="./showCase2.png"
             alt="Keeper App"
             delay={0.7}
