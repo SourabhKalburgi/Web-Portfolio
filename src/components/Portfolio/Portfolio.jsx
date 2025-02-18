@@ -32,6 +32,13 @@ const Portfolio = () => {
             projectName="Group Study App"
           />
           <PortfolioItem
+            href="https://airesearchassistant-frontend.onrender.com/"
+            imgSrc="./project-4.png"
+            alt="AI research assistant App"
+            delay={0.5}
+            projectName="AI Powered Research Assistant"
+          />
+          <PortfolioItem
             href="https://keeperapp-gy3m.onrender.com/"
             imgSrc="./showCase2.png"
             alt="Keeper App"
