@@ -16,20 +16,20 @@ const Portfolio = () => {
         <motion.div variants={textVariant(0.4)} className={css.heading}>
           <h2>My Latest Works</h2>
         </motion.div>
-        <div className={css.showcase}>
-        <PortfolioItem
-            href="https://sourabhkalburgi18.wixsite.com/portfolio"
-            imgSrc="./showCase3.png"
-            alt="UX Portfolio Website"
-            delay={0.9}
-            projectName="UX Portfolio Website"
-          />
+        <div className={css.showcase}>  
           <PortfolioItem
             href="https://groupstudymernui.onrender.com/"
             imgSrc="./showCase1.png"
             alt="Sound App"
             delay={0.5}
             projectName="Group Study App"
+          />
+          <PortfolioItem
+            href="https://sourabhkalburgi18.wixsite.com/portfolio"
+            imgSrc="./showCase3.png"
+            alt="UX Portfolio Website"
+            delay={0.9}
+            projectName="UX Portfolio Website"
           />
           <PortfolioItem
             href="https://airesearchassistant-frontend.onrender.com/"
