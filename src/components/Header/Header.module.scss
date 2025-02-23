@@ -91,7 +91,7 @@
           right: 1rem;
           width: 60%;
           max-height: calc(100vh - 4rem);
-          background: rgba(10, 10, 10, 0.8);
+          background: rgba(10, 10, 10, 0.95);
           backdrop-filter: blur(12px);
           padding: 1.5rem;
           display: flex;
@@ -101,7 +101,7 @@
           border: 1px solid rgba(255, 174, 0, 0.1);
           box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
           transform-origin: top right;
-          transition: all 300ms ease;
+          will-change: transform, opacity;
   
           li {
             a {
@@ -130,10 +130,15 @@
           display: block;
           color: #ffae00;
           cursor: pointer;
-          transition: transform 0.3s ease;
+          transition: all 0.3s ease;
+          z-index: 100;
   
           &:hover {
             transform: scale(1.1);
+          }
+  
+          svg {
+            transition: transform 0.3s ease;
           }
         }
         display: none;

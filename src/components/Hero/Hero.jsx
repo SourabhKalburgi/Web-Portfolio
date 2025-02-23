@@ -167,7 +167,7 @@ const Hero = () => {
               <span>UI/UX Design</span>
             </div>
             <div className={css.cta}>
-              <a href="#work" className={css.primaryBtn}>View My Work</a>
+              <a href="#portfolio" className={css.primaryBtn}>View My Work</a>
               <a href="mailto:sourabhkalburgi35@gmail.com" className={css.secondaryBtn}>Contact Me</a>
             </div>
           </motion.div>
