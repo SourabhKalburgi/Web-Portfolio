@@ -1,77 +1,220 @@
 @import '../../styles/contants.scss';
 
 .wrapper {
-  color: #f7fff7;
+  background: #0a0a0a;
+  padding: 4rem 0;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 50% 50%, rgba(255, 174, 0, 0.1), transparent 70%);
+    pointer-events: none;
+  }
+
   .container {
-    flex-direction: column;
-    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
 
-    .experiences {
-      width: 100%;
-      flex-direction: column;
-      gap: 1.4rem;
-      position: relative;
+    @media (max-width: 768px) {
+      padding: 0 1.5rem;
+    }
 
-      .exp {
-        width: 100%;
-        justify-content: space-between;
-        line-height: 40px;
-        align-items: flex-start;
+    .heading {
+      text-align: center;
+      margin-bottom: 4rem;
 
-        >div {
-          flex: 1;
-        }
+      h2 {
+        font-size: 3rem;
+        font-weight: 700;
+        color: #f7fff7;
+        margin-bottom: 1rem;
+        background: linear-gradient(45deg, #ffae00, #ff4e00);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
 
-        .role {
-          margin-left: 2rem;
-        }
-
-        h1 {
-          font-size: 1.2rem;
-          @media (min-width: $sm) {
-            font-size: 1.5rem;
-          }
-        }
-
-        p {
-          font-size: 0.8rem;
-          @media (min-width: $sm) {
-            font-size: 1rem;
-          }
+        @media (max-width: 768px) {
+          font-size: 2.5rem;
         }
       }
 
-      .progressbar {
-        position: absolute;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        gap: 1.4rem;
-        left: 45%;
+      p {
+        color: #cccccc;
+        font-size: 1.2rem;
 
-        .line {
-          position: absolute;
-          height: 92%;
-          width: 2px;
-          background-image: linear-gradient(black 33%, rgba(255, 255, 255, 0) 0%);
-          background-position: right;
-          background-size: 2px 30px;
-          background-repeat: repeat-y;
-          left: 48%;
-          z-index: 1;
-          border-radius: 5px;
+        @media (max-width: 768px) {
+          font-size: 1rem;
+        }
+      }
+    }
+
+    .timeline {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+
+      &::before {
+        content: '';
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 2px;
+        height: 100%;
+        background: linear-gradient(
+          180deg,
+          transparent,
+          #ffae00 10%,
+          #ffae00 90%,
+          transparent
+        );
+
+        @media (max-width: 768px) {
+          left: 20px;
+        }
+      }
+
+      .timelineItem {
+        display: flex;
+        justify-content: flex-end;
+        padding-right: 30px;
+        margin-bottom: 3rem;
+        width: 50%;
+        position: relative;
+
+        &:nth-child(odd) {
+          align-self: flex-end;
+          justify-content: flex-start;
+          padding-left: 30px;
+          padding-right: 0;
+          left: 50%;
+
+          .timelineDot {
+            left: -6px;
+          }
+
+          .timelineContent {
+            &::before {
+              left: -15px;
+              border-width: 8px 16px 8px 0;
+              border-color: transparent rgba(255, 255, 255, 0.03) transparent transparent;
+            }
+          }
         }
 
-        >div {
-          flex: 1;
-          padding-top: .8rem;
+        @media (max-width: 768px) {
+          width: 100%;
+          padding-left: 45px;
+          padding-right: 0;
+          left: 0 !important;
+
+          .timelineDot {
+            left: 14px !important;
+          }
+
+          .timelineContent {
+            &::before {
+              left: -15px !important;
+              border-width: 8px 16px 8px 0 !important;
+              border-color: transparent rgba(255, 255, 255, 0.03) transparent transparent !important;
+            }
+          }
+        }
+
+        .timelineContent {
+          background: rgba(255, 255, 255, 0.03);
+          backdrop-filter: blur(10px);
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          border-radius: 16px;
+          padding: 1.5rem;
+          position: relative;
+          transition: all 0.3s ease;
+
+          &:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 174, 0, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+          }
+
+          &::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            right: -15px;
+            border-style: solid;
+            border-width: 8px 0 8px 16px;
+            border-color: transparent transparent transparent rgba(255, 255, 255, 0.03);
+          }
+
+          .timeHeader {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+
+            .date {
+              color: #ffae00;
+              font-size: 0.9rem;
+              font-weight: 500;
+            }
+
+            .company {
+              color: #f7fff7;
+              font-size: 1rem;
+              font-weight: 600;
+            }
+          }
+
+          .role {
+            margin-bottom: 1rem;
+
+            h3 {
+              color: #f7fff7;
+              font-size: 1.2rem;
+              margin-bottom: 0.5rem;
+            }
+
+            p {
+              color: #cccccc;
+              font-size: 0.9rem;
+              line-height: 1.5;
+            }
+          }
+
+          .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+
+            span {
+              padding: 0.3rem 0.8rem;
+              background: rgba(255, 255, 255, 0.05);
+              border-radius: 50px;
+              font-size: 0.8rem;
+              color: #ffae00;
+            }
+          }
+        }
+
+        .timelineDot {
+          position: absolute;
+          right: -6px;
+          top: 20px;
           z-index: 2;
 
-          .circle {
+          .dot {
+            width: 12px;
+            height: 12px;
             border-radius: 50%;
-            background: black;
-            width: 1.2rem;
-            height: 1.2rem;
+            background: #ffae00;
+            box-shadow: 0 0 0 4px rgba(255, 174, 0, 0.2);
           }
         }
       }

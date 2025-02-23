@@ -22,7 +22,7 @@ const Header = () => {
       variants={headerVariants}
       initial="hidden"
       whileInView="show"
-      className={`bg-primary paddings ${css.wrapper}`}
+      className={`paddings ${css.wrapper}`}
       viewport={{ once: true, amount: 0.25 }}
       style={{ boxShadow: headerShadow }}
     >

@@ -29,26 +29,35 @@ export const WhatDoIHelp = [
 
 export const workExp = [
   {
-    place: "Software Developer Trainee",
+    place: "Software Engineer",
     tenure: "Current", // Update tenure based on your actual experience
     role: "Bangalore", // Replace with the actual company name
     detail:
-      "Worked as a Software Developer Trainee, gaining hands-on experience in software development and contributing to various projects."
+      "Building scalable software solutions and contributing to various projects with hands-on experience in full-stack development."
+  },
+  ,{
+
+    place: "DevOps Certification ",
+    tenure: "4 MONTHS",
+    role: "Udemy",
+    detail:
+      "Learned CI/CD, containerization, and cloud automation to streamline software development and deployment.",
+
   },
   {
-    place: "FULLSTACK WEB DEVELOPMENT",
+    place: "Full-Stack Web Development Certification",
     tenure: "4 MONTHS",
-    role: "UDEMY",
+    role: "Udemy",
     detail:
-      "Learnt Web development along with great projects in this well curated course",
+      "Gained expertise in modern web technologies through hands-on projects in a well-structured course.",
   },
   {
-    place: "UX DESIGN PROFESSIONAL CIRTIFICATION",
+    place: "UX Design Professional Certification",
     tenure: "4 MONTHS",
-    role: "GOOGLE",
+    role: "Google",
     detail:
-      "This course gave me a channel for my creativity and inspired me to go steps further and learn web development",
-  },
+      "Explored user-centered design, enhancing creativity and bridging the gap between UX and web development",
+  }
   // {
   //   place: "Mechanical Engineering",
   //   tenure: "Aug 2019 - June 2023",

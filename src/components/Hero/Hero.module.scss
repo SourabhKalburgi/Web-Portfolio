@@ -1,147 +1,350 @@
 .wrapper {
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
     overflow: hidden;
     color: #f7fff7;
+    background: #0a0a0a;
+    padding-top: 4rem;
+  
+    .backgroundEffect {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      pointer-events: none;
+    }
   
     .container {
       position: relative;
-      z-index: 1;
+      z-index: 2;
+      min-height: calc(100vh - 4rem);
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      pointer-events: none;
   
-      .upperElements {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        color: #f7fff7;
+      a, button, .expertise span {
+        pointer-events: auto;
+      }
+  
+      @media (max-width: 480px) {
+        padding: 1.5rem;
+        min-height: calc(100vh - 3.5rem);
+      }
+  
+      .content {
+        margin-bottom: 3rem;
   
         @media (max-width: 768px) {
-          justify-content: center;
-          text-align: center;
+          margin-bottom: 2rem;
+        }
+  
+        .headline {
+          margin-bottom: 2rem;
+  
+          @media (max-width: 768px) {
+            margin-bottom: 1.5rem;
+          }
+  
+          h1 {
+            font-size: 4.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(45deg, #ffae00, #ff4e00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.1;
+  
+            @media (max-width: 1024px) {
+              font-size: 3.5rem;
+            }
+  
+            @media (max-width: 768px) {
+              font-size: 2.8rem;
+            }
+  
+            @media (max-width: 480px) {
+              font-size: 2.2rem;
+            }
+          }
+  
+          h2 {
+            font-size: 2.5rem;
+            color: #f7fff7;
+            font-weight: 600;
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+            flex-wrap: wrap;
+  
+            .staticText {
+              opacity: 0.9;
+            }
+  
+            .morphingText {
+              color: #ffae00;
+              position: relative;
+              display: inline-block;
+              min-width: 200px;
+              
+              @keyframes glitch {
+                0% {
+                  transform: translate(0);
+                }
+                20% {
+                  transform: translate(-2px, 2px);
+                }
+                40% {
+                  transform: translate(-2px, -2px);
+                }
+                60% {
+                  transform: translate(2px, 2px);
+                }
+                80% {
+                  transform: translate(2px, -2px);
+                }
+                100% {
+                  transform: translate(0);
+                }
+              }
+  
+              @keyframes gradient {
+                0% {
+                  background-position: 0% 50%;
+                }
+                100% {
+                  background-position: 100% 50%;
+                }
+              }
+  
+              &::before,
+              &::after {
+                content: attr(data-text);
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(45deg, #ffae00, #ff4e00, #ffae00);
+                background-size: 200% auto;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                animation: gradient 3s linear infinite;
+              }
+  
+              &::before {
+                left: 2px;
+                text-shadow: -2px 0 #ff4e00;
+                animation: glitch 0.75s infinite linear alternate-reverse;
+              }
+  
+              &::after {
+                left: -2px;
+                text-shadow: 2px 0 #ffae00;
+                animation: glitch 0.75s infinite linear alternate;
+              }
+  
+              // Text transition effect
+              transition: all 0.3s ease;
+              &:hover {
+                transform: translateY(-2px);
+                text-shadow: 0 0 8px rgba(255, 174, 0, 0.5);
+              }
+            }
+  
+            @media (max-width: 1024px) {
+              font-size: 2rem;
+              .morphingText {
+                min-width: 160px;
+              }
+            }
+  
+            @media (max-width: 768px) {
+              font-size: 1.6rem;
+              .morphingText {
+                min-width: 130px;
+              }
+            }
+  
+            @media (max-width: 480px) {
+              font-size: 1.3rem;
+              .morphingText {
+                min-width: 110px;
+              }
+            }
+          }
+        }
+  
+        .intro {
+          max-width: 700px;
+  
+          p {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+  
+            @media (max-width: 768px) {
+              font-size: 1.1rem;
+            }
+  
+            @media (max-width: 480px) {
+              font-size: 1rem;
+            }
+  
+            &.description {
+              color: #cccccc;
+              line-height: 1.6;
+              font-size: 1.1rem;
+  
+              @media (max-width: 480px) {
+                font-size: 0.95rem;
+                line-height: 1.5;
+              }
+            }
+          }
+  
+          .expertise {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 2rem 0;
+  
+            @media (max-width: 768px) {
+              gap: 0.8rem;
+              margin: 1.5rem 0;
+            }
+  
+            span {
+              padding: 0.5rem 1.2rem;
+              background: rgba(255, 174, 0, 0.1);
+              border: 1px solid rgba(255, 174, 0, 0.3);
+              border-radius: 50px;
+              color: #ffae00;
+              font-size: 0.9rem;
+              font-weight: 500;
+              transition: all 0.3s ease;
+  
+              @media (max-width: 480px) {
+                padding: 0.4rem 1rem;
+                font-size: 0.8rem;
+              }
+  
+              &:hover {
+                background: rgba(255, 174, 0, 0.2);
+                transform: translateY(-2px);
+              }
+            }
+          }
+  
+          .cta {
+            margin-top: 2rem;
+            display: flex;
+            gap: 1rem;
+  
+            @media (max-width: 480px) {
+              flex-direction: column;
+              gap: 0.8rem;
+            }
+  
+            a {
+              padding: 0.8rem 2rem;
+              border-radius: 50px;
+              font-weight: 600;
+              transition: all 0.3s ease;
+              text-decoration: none;
+              text-align: center;
+  
+              @media (max-width: 480px) {
+                padding: 0.7rem 1.8rem;
+              }
+  
+              &.primaryBtn {
+                background: #ffae00;
+                color: black;
+  
+                &:hover {
+                  background: #ff4e00;
+                  transform: translateY(-2px);
+                }
+              }
+  
+              &.secondaryBtn {
+                border: 2px solid #ffae00;
+                color: #ffae00;
+  
+                &:hover {
+                  background: rgba(255, 174, 0, 0.1);
+                  transform: translateY(-2px);
+                }
+              }
+            }
+          }
+        }
+      }
+  
+      .stats {
+        display: flex;
+        gap: 3rem;
+        padding: 2rem 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+  
+        @media (max-width: 1024px) {
           gap: 2rem;
         }
   
-        .primaryText, .secondaryText {
-          font-size: 1.5rem;
-  
-          @media (max-width: 768px) {
-            font-size: 1rem;
-          }
-  
-          @media (max-width: 576px) {
-            font-size: 1rem;
-          }
-        }
-      }
-  
-      .lowerElements {
-        margin-top: 12rem;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-  
         @media (max-width: 768px) {
-          margin-top: 4rem;
-          gap: 1rem;
+          flex-wrap: wrap;
           justify-content: center;
+          gap: 2rem 3rem;
         }
-        
   
-        .experience, .certificate {
+        @media (max-width: 480px) {
+          gap: 1.5rem;
+          padding: 1.5rem 0;
+        }
+  
+        .stat {
           display: flex;
+          flex-direction: column;
           align-items: center;
-          gap: 1rem;
+          text-align: center;
+          min-width: 120px;
   
-          .secondaryText {
-            font-size: 1.2rem;
-            color: #f7fff7;
+          @media (max-width: 480px) {
+            min-width: 100px;
           }
   
-          .primaryText {
-            font-size: 30px;
-            line-height: 37px;
+          .number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #ffae00, #ff4e00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
   
             @media (max-width: 768px) {
-              font-size: 28px;
-              line-height: 30px;
+              font-size: 2.2rem;
             }
   
-            @media (max-width: 576px) {
-              font-size: 24px;
-              line-height: 26px;
-            }
-          }
-        }
-  
-        .experience {
-          // Professional Web Developer style remains the same
-          .primaryText {
-            div {
-              line-height: 1.2;
-            }
-          }
-        }
-  
-        .certificate {
-          // Reuse similar design for CERTIFIED UI/UX DESIGNER
-          img {
-            display: none; // Hide the image to make it uniform
-          }
-  
-          .primaryText {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-  
-            div {
-              line-height: 1.2;
+            @media (max-width: 480px) {
+              font-size: 1.8rem;
             }
           }
   
-          a.uxcertificate {
-            display: none; // Hide the link
+          .label {
+            color: #cccccc;
+            font-size: 0.9rem;
+            white-space: nowrap;
+  
+            @media (max-width: 480px) {
+              font-size: 0.8rem;
+            }
           }
-        }
-      }
-  
-      .person {
-        position: absolute;
-        bottom: -2rem;
-        margin: auto;
-        background-image: url("../splash.png");
-        background-repeat: no-repeat;
-        background-size: 20rem;
-        left: 33%;
-  
-        @media (max-width: 768px) {
-          position: relative;
-          left: 0;
-          background-size: 15rem;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          background-position: bottom;
-        }
-  
-        img {
-          margin-bottom: -5px;
-  
-          @media (max-width: 768px) {
-            width: 20rem;
-          }
-  
-          @media (max-width: 576px) {
-            width: 18rem;
-          }
-        }
-      }
-  
-      .email {
-        position: absolute;
-        top: 50%;
-        left: 0;
-        color: rgb(255, 166, 0);
-  
-        @media (max-width: 768px) {
-          display: none;
         }
       }
     }
@@ -152,6 +355,33 @@
   .wrapper .container .lowerElements .certificate .primaryText {
     @media (max-width: 640px) {
       font-size: 24px !important;
+    }
+  }
+  
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0) translateX(0);
+    }
+    25% {
+      transform: translateY(-15px) translateX(15px);
+    }
+    50% {
+      transform: translateY(-25px) translateX(0);
+    }
+    75% {
+      transform: translateY(-15px) translateX(-15px);
+    }
+  }
+  
+  // Add a subtle hover effect to particles near the cursor
+  @media (hover: hover) {
+    .wrapper:hover .backgroundEffect .particle {
+      transition: transform 0.2s ease;
+      
+      &:hover {
+        transform: scale(2);
+        background: rgba(255, 174, 0, 0.8);
+      }
     }
   }
   

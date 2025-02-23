@@ -1,44 +1,60 @@
 import React from "react";
 import { workExp } from "../../utils/data";
 import css from "./Work.module.scss";
-import {motion} from 'framer-motion'
-import { draw, fadeIn, slideIn, staggerChildren, textVariant2, zoomIn } from "../../utils/motion";
+import { motion } from 'framer-motion';
+import { fadeIn, staggerChildren } from "../../utils/motion";
+
 const Work = () => {
   return (
     <motion.section 
-    variants={staggerChildren}
-    initial="hidden"
-    whileInView="show"
-    viewport={{ once: false, amount: 0.25 }}
-    className={`paddings ${css.wrapper}`}>
-    <a className="anchor" id="work"></a>
+      variants={staggerChildren}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.1 }}
+      className={css.wrapper}
+    >
+      <a className="anchor" id="work"></a>
 
-      <div className={`innerWidth flexCenter ${css.container}`}>
-        {/* heading */}
-        <span className="primaryText yPaddings">My background</span>
+      <div className={css.container}>
+        <motion.div 
+          variants={fadeIn("down", "tween", 0.2, 1)}
+          className={css.heading}
+        >
+          <h2>Professional Journey</h2>
+          <p>Building innovative solutions across different domains</p>
+        </motion.div>
 
-        <div className={`flexCenter ${css.experiences}`}>
-          {workExp.map((exp, i) => {
-            return (
-              <motion.div variants={textVariant2} key={i} className={`flexCenter ${css.exp}`}>
-                <div className={css.post}>
-                  <h1>{exp.place}</h1>
-                  <p>{exp.tenure}</p>
+        <div className={css.timeline}>
+          {workExp.map((exp, i) => (
+            <motion.div 
+              key={i}
+              variants={fadeIn("up", "tween", 0.2 * i, 0.5)}
+              className={css.timelineItem}
+            >
+              <div className={css.timelineContent}>
+                <div className={css.timeHeader}>
+                  <span className={css.date}>{exp.tenure}</span>
+                  <span className={css.company}>{exp.place}</span>
                 </div>
+                
                 <div className={css.role}>
-                  <h1>{exp.role}</h1>
+                  <h3>{exp.role}</h3>
                   <p>{exp.detail}</p>
                 </div>
-              </motion.div>
-            );
-          })}
-          <motion.div variants={zoomIn(1, 1)} className={css.progressbar}>
-            <motion.div variants={fadeIn("down", "tween", 2, 1.5)} className={css.line}></motion.div>
-            <div><div className={css.circle} style={{background: "#286F6C"}}></div></div>
-            <div><div className={css.circle} style={{background: "#F2704E"}}></div></div>
-            <div><div className={css.circle} style={{background: "#EEC048"}}></div></div>
-          </motion.div>
 
+                <div className={css.skills}>
+                  {exp.skills?.map((skill, index) => (
+                    <span key={index}>{skill}</span>
+                  ))}
+                </div>
+              </div>
+              
+              <div className={css.timelineDot}>
+                <div className={css.dot}></div>
+                <div className={css.line}></div>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </motion.section>
